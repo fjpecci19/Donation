@@ -1,12 +1,11 @@
 package com.example.donacin
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.donacin.databinding.DonationCardBinding
 
 class CardAdapter: ListAdapter<Card, CardAdapter.CardViewHolder>(DiffCallBack) {
 
@@ -21,20 +20,20 @@ class CardAdapter: ListAdapter<Card, CardAdapter.CardViewHolder>(DiffCallBack) {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardAdapter.CardViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.donation_card, parent, false)
-        return CardViewHolder(view)
+        val binding = DonationCardBinding.inflate(LayoutInflater.from(parent.context))
+        return CardViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: CardAdapter.CardViewHolder, position: Int) {
         val card = getItem(position)
-        holder.title.text = card.title
-        holder.hour.text = card.hour
-        holder.direction.text = card.direction
+        holder.bind(card)
     }
 
-    inner class CardViewHolder(view: View): RecyclerView.ViewHolder(view){
-        val title = view.findViewById<TextView>(R.id.title)
-        val hour = view.findViewById<TextView>(R.id.hour)
-        val direction = view.findViewById<TextView>(R.id.direction)
+    inner class CardViewHolder(private val binding: DonationCardBinding): RecyclerView.ViewHolder(binding.root){
+        fun bind (card: Card){
+            binding.title.text = card.title
+            binding.hour.text = card.hour
+            binding.direction.text = card.direction
+        }
     }
 }

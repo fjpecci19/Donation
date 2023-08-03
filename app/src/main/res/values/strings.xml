@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Donation</string>
+    <string name="hour">Hour</string>
+    <string name="direction">Direction</string>
+    <string name="see_more">See more</string>
+    <string name="go">Go</string>
+</resources>

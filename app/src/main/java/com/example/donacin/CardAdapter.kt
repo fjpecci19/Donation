@@ -34,6 +34,8 @@ class CardAdapter: ListAdapter<Card, CardAdapter.CardViewHolder>(DiffCallBack) {
             binding.title.text = card.title
             binding.hour.text = card.hour
             binding.direction.text = card.direction
+
+            binding.executePendingBindings()
         }
     }
 }

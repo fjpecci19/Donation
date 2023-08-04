@@ -10,10 +10,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MainActivity"
-        android:background="@color/red">
+        android:background="@color/blue">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/donacion_recycler"
+            android:id="@+id/cards_recycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Hello World!"/>

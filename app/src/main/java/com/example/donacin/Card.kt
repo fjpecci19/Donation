@@ -1,3 +1,3 @@
 package com.example.donacin
 
-data class Card (var title: String, val hour: String, val direction: String)
+data class Card(var name: String, val status: String, val species: String)

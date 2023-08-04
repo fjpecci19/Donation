@@ -18,12 +18,12 @@ class MainActivity : AppCompatActivity() {
         val binding: ActivityMainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.donacionRecycler.layoutManager = LinearLayoutManager(this)
+        binding.cardsRecycler.layoutManager = LinearLayoutManager(this)
 
         val viewModel: MainViewModel = ViewModelProvider(this)[MainViewModel::class.java]
 
         val adapter = CardAdapter()
-        binding.donacionRecycler.adapter = adapter
+        binding.cardsRecycler.adapter = adapter
 
         viewModel.cardList.observe(this, Observer{
             cardList ->

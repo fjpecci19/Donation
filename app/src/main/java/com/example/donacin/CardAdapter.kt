@@ -11,7 +11,7 @@ class CardAdapter: ListAdapter<Card, CardAdapter.CardViewHolder>(DiffCallBack) {
 
     companion object DiffCallBack: DiffUtil.ItemCallback<Card>(){
         override fun areItemsTheSame(olditem: Card, newItem: Card): Boolean{
-            return olditem.title == newItem.title
+            return olditem.name == newItem.name
         }
 
         override fun areContentsTheSame(olditem: Card, newItem: Card): Boolean{
@@ -31,9 +31,9 @@ class CardAdapter: ListAdapter<Card, CardAdapter.CardViewHolder>(DiffCallBack) {
 
     inner class CardViewHolder(private val binding: DonationCardBinding): RecyclerView.ViewHolder(binding.root){
         fun bind (card: Card){
-            binding.title.text = card.title
-            binding.hour.text = card.hour
-            binding.direction.text = card.direction
+            binding.name.text = card.name
+            binding.status.text = card.status
+            binding.species.text = card.species
 
             binding.executePendingBindings()
         }

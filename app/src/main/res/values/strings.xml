@@ -1,8 +1,7 @@
 <resources>
-    <string name="app_name">Donation</string>
-    <string name="hour">Hour</string>
-    <string name="direction">Direction</string>
-    <string name="see_more">See more</string>
-    <string name="go">Go</string>
+    <string name="app_name">Rick and Morty Characters</string>
+    <string name="name">Name</string>
+    <string name="status">Status</string>
+    <string name="species">Specie</string>
     <string name="empty">No donation cards here</string>
 </resources>

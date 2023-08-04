@@ -1,6 +1,5 @@
 package com.example.donacin
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -25,19 +24,28 @@ class MainViewModel: ViewModel() {
     private suspend fun fetchCards(): MutableList<Card> {
         return withContext(Dispatchers.IO) {
             val cardListString = service.getCharacter()
-            parseCardResult(cardListString)
-            Log.d("Manzana", cardListString)
-            mutableListOf()
+
+            val cardlist = parseCardResult(cardListString)
+
+            cardlist
         }
     }
 
-    private fun parseCardResult(cardListString: String) {
-        val CardJsonObject = JSONObject(cardListString)
-        val resultsJsonArray = CardJsonObject.getJSONArray("results")
+    private fun parseCardResult(cardListString: String): MutableList<Card> {
+        val cardJsonObject = JSONObject(cardListString)
+        val resultsJsonArray = cardJsonObject.getJSONArray("results")
+
+        val cardlist = mutableListOf<Card>()
 
         for (i in 0 until resultsJsonArray.length()){
             val resultsJsonObject: JSONObject = resultsJsonArray[i] as JSONObject
             val id: String = resultsJsonObject.getString("id")
+            val name: String = resultsJsonObject.getString("name")
+            val status: String = resultsJsonObject.getString("status")
+
+            val card = Card(id, name, status)
+            cardlist.add(card)
         }
+        return cardlist
     }
 }

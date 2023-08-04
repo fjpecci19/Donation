@@ -1,8 +1,10 @@
 package com.example.donacin
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.donacin.databinding.ActivityMainBinding
 
@@ -18,51 +20,20 @@ class MainActivity : AppCompatActivity() {
 
         binding.donacionRecycler.layoutManager = LinearLayoutManager(this)
 
-        val cardList = mutableListOf<Card>()
-
-        cardList.add(Card("El Cantaro", "19-21","Av. Paraguay c/ Mcal. López 343"))
-        cardList.add(Card("El Cantaro", "19-21","Av. Paraguay c/ Mcal. López 343"))
-        cardList.add(Card("El Cantaro", "19-21","Av. Paraguay c/ Mcal. López 343"))
-        cardList.add(Card("El Cantaro", "19-21","Av. Paraguay c/ Mcal. López 343"))
-        cardList.add(Card("El Cantaro", "19-21","Av. Paraguay c/ Mcal. López 343"))
-        cardList.add(Card("El Cantaro", "19-21","Av. Paraguay c/ Mcal. López 343"))
-        cardList.add(Card("El Cantaro", "19-21","Av. Paraguay c/ Mcal. López 343"))
-        cardList.add(Card("El Cantaro", "19-21","Av. Paraguay c/ Mcal. López 343"))
-        cardList.add(Card("El Cantaro", "19-21","Av. Paraguay c/ Mcal. López 343"))
-        cardList.add(Card("El Cantaro", "19-21","Av. Paraguay c/ Mcal. López 343"))
-        cardList.add(Card("El Cantaro", "19-21","Av. Paraguay c/ Mcal. López 343"))
-        cardList.add(Card("El Cantaro", "19-21","Av. Paraguay c/ Mcal. López 343"))
-        cardList.add(Card("El Cantaro", "19-21","Av. Paraguay c/ Mcal. López 343"))
-        cardList.add(Card("El Cantaro", "19-21","Av. Paraguay c/ Mcal. López 343"))
-        cardList.add(Card("El Cantaro", "19-21","Av. Paraguay c/ Mcal. López 343"))
-        cardList.add(Card("El Cantaro", "19-21","Av. Paraguay c/ Mcal. López 343"))
-        cardList.add(Card("El Cantaro", "19-21","Av. Paraguay c/ Mcal. López 343"))
-        cardList.add(Card("El Cantaro", "19-21","Av. Paraguay c/ Mcal. López 343"))
-        cardList.add(Card("El Cantaro", "19-21","Av. Paraguay c/ Mcal. López 343"))
-        cardList.add(Card("El Cantaro", "19-21","Av. Paraguay c/ Mcal. López 343"))
-        cardList.add(Card("El Cantaro", "19-21","Av. Paraguay c/ Mcal. López 343"))
-        cardList.add(Card("El Cantaro", "19-21","Av. Paraguay c/ Mcal. López 343"))
-        cardList.add(Card("El Cantaro", "19-21","Av. Paraguay c/ Mcal. López 343"))
-        cardList.add(Card("El Cantaro", "19-21","Av. Paraguay c/ Mcal. López 343"))
-        cardList.add(Card("El Cantaro", "19-21","Av. Paraguay c/ Mcal. López 343"))
-        cardList.add(Card("El Cantaro", "19-21","Av. Paraguay c/ Mcal. López 343"))
-        cardList.add(Card("El Cantaro", "19-21","Av. Paraguay c/ Mcal. López 343"))
-        cardList.add(Card("El Cantaro", "19-21","Av. Paraguay c/ Mcal. López 343"))
-        cardList.add(Card("El Cantaro", "19-21","Av. Paraguay c/ Mcal. López 343"))
-        cardList.add(Card("El Cantaro", "19-21","Av. Paraguay c/ Mcal. López 343"))
-        cardList.add(Card("El Cantaro", "19-21","Av. Paraguay c/ Mcal. López 343"))
-        cardList.add(Card("El Cantaro", "19-21","Av. Paraguay c/ Mcal. López 343"))
-        cardList.add(Card("El Cantaro", "19-21","Av. Paraguay c/ Mcal. López 343"))
-        cardList.add(Card("El Cantaro", "19-21","Av. Paraguay c/ Mcal. López 343"))
-        cardList.add(Card("El Cantaro", "19-21","Av. Paraguay c/ Mcal. López 343"))
-        cardList.add(Card("El Cantaro", "19-21","Av. Paraguay c/ Mcal. López 343"))
+        val viewModel: MainViewModel = ViewModelProvider(this)[MainViewModel::class.java]
 
         val adapter = CardAdapter()
         binding.donacionRecycler.adapter = adapter
-        adapter.submitList(cardList)
 
-        if (cardList.isEmpty()){
-            binding.gone.visibility = View.VISIBLE
-        }
+        viewModel.cardList.observe(this, Observer{
+            cardList ->
+            adapter.submitList(cardList)
+            if (cardList.isEmpty()){
+                binding.gone.visibility = View.VISIBLE
+            }
+        })
+    }
+    fun onItemClick(card: Card) {
+
     }
 }

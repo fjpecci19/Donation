@@ -38,4 +38,8 @@ class CardAdapter: ListAdapter<Card, CardAdapter.CardViewHolder>(DiffCallBack) {
             binding.executePendingBindings()
         }
     }
+
+    interface OnItemClickListener {
+        fun onItemClick(card: Card)
+    }
 }

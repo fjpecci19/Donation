@@ -11,7 +11,7 @@ interface CardApiService {
 }
 
 private var retrofit = Retrofit.Builder()
-    .baseUrl("https://rickandmortyapi.com/api")
+    .baseUrl("https://rickandmortyapi.com/api/")
     .addConverterFactory(ScalarsConverterFactory.create())
     .build()
 

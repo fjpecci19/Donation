@@ -22,9 +22,10 @@
                 android:id="@+id/character"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
-                android:src="@drawable/ic_launcher_background"
                 android:importantForAccessibility="no"
-                android:scaleType="centerCrop"/>
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_launcher_background"
+                tools:ignore="ImageContrastCheck" />
 
             <TextView
                 android:id="@+id/name"

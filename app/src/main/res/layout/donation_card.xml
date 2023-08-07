@@ -18,11 +18,20 @@
             android:background="@color/white"
             android:layout_margin="25dp">
 
+            <ImageView
+                android:id="@+id/character"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:src="@drawable/ic_launcher_background"
+                android:importantForAccessibility="no"
+                android:scaleType="centerCrop"/>
+
             <TextView
                 android:id="@+id/name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:layout_below="@id/character"
                 android:text="@string/name"
                 android:textColor="@color/black"
                 android:textSize="20sp"
@@ -35,23 +44,10 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/name"
                 android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
                 android:text="@string/status"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                android:gravity="center_horizontal"
-                tools:ignore="RtlHardcoded,VisualLintOverlap" />
-
-
-            <TextView
-                android:id="@+id/species"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/status"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                android:text="@string/species"
-                android:textColor="@color/black"
-                android:textSize="15sp"
                 android:gravity="center_horizontal"
                 tools:ignore="RtlHardcoded,VisualLintOverlap" />
 

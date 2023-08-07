@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.donacin.databinding.DonationCardBinding
+import com.squareup.picasso.Picasso
 
 class CardAdapter: ListAdapter<Card, CardAdapter.CardViewHolder>(DiffCallBack) {
 
@@ -31,9 +32,9 @@ class CardAdapter: ListAdapter<Card, CardAdapter.CardViewHolder>(DiffCallBack) {
 
     inner class CardViewHolder(private val binding: DonationCardBinding): RecyclerView.ViewHolder(binding.root){
         fun bind (card: Card){
+            Picasso.get().load(card.image).into(binding.character)
             binding.name.text = card.name
             binding.status.text = card.status
-            binding.species.text = card.species
 
             binding.executePendingBindings()
         }

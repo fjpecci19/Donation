@@ -39,11 +39,11 @@ class MainViewModel: ViewModel() {
 
         for (i in 0 until resultsJsonArray.length()){
             val resultsJsonObject: JSONObject = resultsJsonArray[i] as JSONObject
+            val image: String = resultsJsonObject.getString("image")
             val name: String = resultsJsonObject.getString("name")
             val status: String = resultsJsonObject.getString("status")
-            val species: String = resultsJsonObject.getString("species")
 
-            val card = Card(name, status, species)
+            val card = Card(image, name, status)
             cardlist.add(card)
         }
         return cardlist
